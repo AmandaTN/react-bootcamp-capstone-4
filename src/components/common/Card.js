@@ -1,8 +1,8 @@
 import { Title } from "./Title_Styled";
 
-export function Card({ Image, title, subtitle = "", children }) {
+export function Card({ Image, title, subtitle = "", className, children }) {
   return (
-    <div className="card-box">
+    <div className={`${className} card-box`}>
       {!!Image && Image}
       <Title as="h5">{title}</Title>
       {!!subtitle && <Title as="h6">{subtitle}</Title>}

@@ -1,12 +1,17 @@
 //import { useCategories } from '../../../utils/hooks/useCategories';
 import { categoriesData } from "../../../mocks/product-categories";
 import { Title } from "../../common/Title_Styled";
+import styled from "styled-components";
+
+const StyledComp = styled.div`
+  text-align: center;
+`;
 
 export function Categories() {
   const categories = categoriesData.results;
 
   return (
-    <div className="categories-container">
+    <StyledComp className="categories-container">
       <Title as="h3">Our Categories</Title>
       <div className="row">
         <div className="col-md-offset-1 xs-hide sm-hide md-show">
@@ -25,6 +30,6 @@ export function Categories() {
           );
         })}
       </div>
-    </div>
+    </StyledComp>
   );
 }

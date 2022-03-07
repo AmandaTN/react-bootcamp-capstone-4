@@ -363,6 +363,10 @@ img {
   width: 100%;
 }
 
+a {
+  cursor: pointer;
+}
+
 /*------------------------------------*\
 * CONTAINER
 \*------------------------------------*/
@@ -377,8 +381,9 @@ img {
 }
 
 .container {
-  max-width: 85rem;
+  max-width: 1400px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .row {
