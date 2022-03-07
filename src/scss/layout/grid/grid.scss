@@ -1,0 +1,96 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row.no-gutter [class*=col] {
+    padding: 0;
+}
+
+[class*=col] {
+    padding: calc(($gutter / 2));
+    position: relative;
+}
+
+.col {
+    flex-shrink: 1;
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+[class*=col].no-gutter {
+    padding: 0;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.col-11 {
+    width: 91.666%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-8 {
+    width: 66.666%;
+}
+
+.col-7 {
+    width: 58.333%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-5 {
+    width: 41.666%;
+}
+
+.col-4 {
+    width: 33.333%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-2 {
+    width: 16.666%;
+}
+
+.col-1 {
+    width: 8.333%;
+}
+
+@include xs {
+    @include gridGenerator($breakpoint: 'xs', $offset: true, $hidding: true, $showing: true, $ordering: true);
+}
+
+@include sm {
+    @include gridGenerator($breakpoint: 'sm', $offset: true, $hidding: true, $showing: true, $ordering: true);
+}
+
+@include md {
+    @include gridGenerator($breakpoint: 'md', $offset: true, $hidding: true, $showing: true, $ordering: true);
+}
+
+@include lg {
+    @include gridGenerator($breakpoint: 'lg', $offset: true, $hidding: true, $showing: true, $ordering: true);
+}

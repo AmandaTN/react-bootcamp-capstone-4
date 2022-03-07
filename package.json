@@ -10,14 +10,19 @@
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "react-scripts": "^4.0.3",
+    "sass": "^1.49.9",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sass-dev": "sass --watch src/scss/index.scss:src/css/app-index.css",
+    "sass-prod": "sass src/scss/index.scss:src/css/app-index.min.css --style compressed"
   },
   "eslintConfig": {
     "extends": [
