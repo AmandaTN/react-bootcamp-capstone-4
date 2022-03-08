@@ -1,9 +1,7 @@
-import styled, {} from 'styled-components'
-
 export function SearchBar({placeholder, children}) {
     return(
         <div>
-            <input placeholder={placeholder} />
+            <input placeholder={placeholder} type='search'/>
             <button>
             {children}
             </button>

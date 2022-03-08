@@ -3,7 +3,7 @@ import { SearchBar } from "../common/SearchBar";
 import { Icon } from "../common/Icon";
 import styled, { css } from "styled-components";
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
   align-items: center;
   padding: 15px 20px;
 
