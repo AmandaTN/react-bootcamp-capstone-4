@@ -1,19 +1,16 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders react store name', () => {
-  render(<App />);
-  const storeName = screen.getByText(/Pietra/i);
-  expect(storeName).toBeInTheDocument();
+describe("App component", () => {
+  it("renders react store name", () => {
+    render(<App />);
+    const storeName = screen.getByText(/Pietra/i);
+    expect(storeName).toBeInTheDocument();
+  });
+  it("renders header", () => {
+    render(<App />);
+    expect(
+      screen.getByRole(/banner/i).classList.contains("header")
+    ).toBeTruthy();
+  });
 });
-
-test('renders search box', () => {
-  render(<App />);
-  const searchInput = screen.getByRole(/searchbox/i);
-  expect(searchInput).toBeInTheDocument();
-})
-
-test('renders header', () => {
-  render(<App />);
-  expect(screen.getByRole(/banner/i).classList.contains('header')).toBeTruthy();
-})

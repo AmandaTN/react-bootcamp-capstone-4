@@ -1,29 +1,11 @@
-import { Title } from "../common/Title_Styled";
-import { SearchBar } from "../common/SearchBar";
-import { Icon } from "../common/Icon";
-import styled, { css } from "styled-components";
-
-const StyledHeader = styled.header`
-  align-items: center;
-  padding: 15px 20px;
-
-  .row {
-    align-items: center;
-  }
-
-  .shoppig-cart-container a {
-    color: black;
-  }
-
-  .shoppig-cart-container svg {
-    width: 30px;
-    height: 30px
-  }
-`;
+import Title from "../../common/Title";
+import SearchBar from "../../common/SearchBar";
+import Icon from "../../common/Icon";
+import {Styled} from './Styled'
 
 export const Header = () => {
   return (
-    <StyledHeader className="header">
+    <Styled className="header">
       <div className="row">
         <div className="col-xs-12 col-sm-12 col-md-8">
           <div className="store-name-container">
@@ -37,12 +19,12 @@ export const Header = () => {
         </div>
         <div className="col-xs-4 col-sm-4col-md-1">
           <div className="shoppig-cart-container">
-            <a href="#">
-              <Icon iconName="BiCartAlt" />
+            <a href="#" target="_blank" role="link">
+              <Icon iconName="BiCartAlt"/>
             </a>
           </div>
         </div>
       </div>
-    </StyledHeader>
+    </Styled>
   );
 };

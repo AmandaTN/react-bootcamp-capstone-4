@@ -3,8 +3,8 @@ import { bannersData } from "../../../../mocks/featured-banners-data";
 import { useEffect, useState } from "react";
 
 //Components
-import { BtnSlider } from "../../../common/BtnSlider";
-import { Slider } from "../../../common/Slide";
+import BtnSlider from "../../../common/BtnSlider";
+import Slide from "../../../common/Slide";
 
 const banners = bannersData.results;
 
@@ -13,19 +13,13 @@ export function MainSlider() {
   const [paused, setPaused] = useState(false);
 
   const nextSlide = () => {
-    if (slideIndex !== banners.length) {
-      setSlideIndex(slideIndex + 1);
-    } else if (slideIndex === banners.length) {
-      setSlideIndex(1);
-    }
+    const newIndex = slideIndex !== banners.length ? slideIndex + 1 : 1;
+    setSlideIndex(newIndex);
   };
 
   const prevSlide = () => {
-    if (slideIndex !== 1) {
-      setSlideIndex(slideIndex - 1);
-    } else if (slideIndex === 1) {
-      setSlideIndex(banners.length);
-    }
+    const newIndex = slideIndex !== 1 ? slideIndex - 1 : banners.length;
+    setSlideIndex(newIndex);
   };
 
   const moveDot = (index) => {
@@ -35,11 +29,8 @@ export function MainSlider() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (!paused) {
-        if (slideIndex !== banners.length) {
-          setSlideIndex(slideIndex + 1);
-        } else if (slideIndex === banners.length) {
-          setSlideIndex(1);
-        }
+        const newIndex = slideIndex !== banners.length ? slideIndex + 1 : 1;
+        setSlideIndex(newIndex);
       }
     }, 5000);
 
@@ -64,8 +55,8 @@ export function MainSlider() {
           };
 
           return (
-            <Slider
-              key={i}
+            <Slide
+              key={image.id}
               slideIndex={slideIndex}
               index={i}
               imgSrc={imgSrc}

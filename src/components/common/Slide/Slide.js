@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
 
-export function Slider({slideIndex, index, imgSrc, imgId, imgAlt, imgStyle, gridSlider}) {
+export function Slide({slideIndex, index, imgSrc, imgId, imgAlt, imgStyle}) {
   return (
           <div
             style={imgStyle}
             id={imgId}
             className={`${
-              slideIndex === (gridSlider ? (index+1) : index + 1) ? "slide active-anim" : "slide"
+              slideIndex === (index + 1) ? "slide active-anim" : "slide"
             }`}
           >
             <img
