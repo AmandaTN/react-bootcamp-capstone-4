@@ -1,22 +1,17 @@
 /* eslint-disable max-len */
 import { featuredData } from "../../../../mocks/featured-products";
-import styled from "styled-components";
+import { Styled } from './Styled'
 
 import Card from "../../../common/Card";
 import Image from "../../../common/Image";
 import Title from "../../../common/Title";
+import Button from "../../../common/Button";
 
-const StyledComp = styled.div`
-  .product-card h5 {
-    min-height: 55px;
-  }
-`;
-
-export function FeaturedProducts() {
+export function FeaturedProducts({activeProducts}) {
   const featuredProducts = featuredData.results;
 
   return (
-    <StyledComp className="feature-products-container container">
+    <Styled className="feature-products-container container">
       <Title as="h3">Featured Products</Title>
       <div className="row">
         {featuredProducts.map((product, i) => {
@@ -31,16 +26,21 @@ export function FeaturedProducts() {
               <Card
                 className="product-card"
                 Image={<Image src={url} alt={alt} />}
-                title={name}
+                title={{name: name, as: 'h5'}}
               >
                 <span className="price">
-                  <b>$</b>${price}
+                  <b>$</b>{price}
                 </span>
               </Card>
             </div>
           );
         })}
       </div>
-    </StyledComp>
+      <div className="view-products">
+      <Button onClick={activeProducts}>
+          View all proucts
+        </Button>
+      </div>
+    </Styled>
   );
 }

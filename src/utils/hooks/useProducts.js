@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../constants';
 import { useLatestAPI } from './useLatestAPI';
 
-export function useCategories() {
+export function useProducts() {
   const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
-  const [Categories, setCategories] = useState(() => ({
+  const [Products, setProducts] = useState(() => ({
     data: {},
     isLoading: true,
   }));
@@ -16,33 +16,33 @@ export function useCategories() {
 
     const controller = new AbortController();
 
-    async function getCategories() {
+    async function getProducts() {
       try {
-        setCategories({ data: {}, isLoading: true });
+        setProducts({ data: {}, isLoading: true });
 
         const response = await fetch(
           `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
-            '[[at(document.type, "category")]]'
-          )}&lang=en-us&pageSize=5`,
+            '[[at(document.type, "product")]]'
+          )}&lang=en-us&pageSize=100`,
           {
             signal: controller.signal,
           }
         );
         const data = await response.json();
 
-        setCategories({ data, isLoading: false });
+        setProducts({ data, isLoading: false });
       } catch (err) {
-        setCategories({ data: {}, isLoading: false });
+        setProducts({ data: {}, isLoading: false });
         console.error(err);
       }
     }
 
-    getCategories();
+    getProducts();
 
     return () => {
       controller.abort();
     };
   }, [apiRef, isApiMetadataLoading]);
 
-  return Categories;
+  return Products;
 }
