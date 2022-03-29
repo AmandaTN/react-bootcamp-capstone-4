@@ -1,28 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
 import { useFeaturedBanners } from './utils/hooks/useFeaturedBanners';
+import { useState } from "react";
+
+//Components
+import {AppStyled} from './AppStyled'
+
+import Header from './components/layout/Header'
+import Content from './components/layout/Content'
+import Footer from './components/layout/Footer'
+import MainSlider from './components/pages/home/MainSlider'
+import Categories from './components/pages/home/Categories'
+import FeaturedProducts from './components/pages/home/FeaturedProducts'
+
+import ProductsPage from './components/pages/products-list/ProductsPage';
 
 function App() {
-  const { data, isLoading } = useFeaturedBanners();
-  console.log(data, isLoading);
+  // const { data: {results}, isLoading } = useFeaturedBanners();
+  // console.log(results, isLoading);
+
+  const [activePage, setActivePage] = useState('home');
+
+  const activeHome = () => {
+    setActivePage('home')
+  }
+
+  const activeProducts = () => setActivePage('products')
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppStyled className="App">
+      < Header activeHome={activeHome} />
+      {activePage === 'home' ? <Content id="main-home">
+        <MainSlider />
+        <Categories />
+        <FeaturedProducts activeProducts={activeProducts} />
+      </Content>
+      :
+      <Content id="products-list">
+        <ProductsPage />
+      </ Content>}
+      < Footer />
+    </AppStyled>
   );
 }
 

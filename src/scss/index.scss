@@ -1,0 +1,12 @@
+@import './theme/main.scss';
+
+@import './layout/normalize/normalize.scss';
+@import './layout/normalize/my-normalize.scss';
+
+@import './layout/grid/variables.scss';
+@import './layout/grid/mixins.scss';
+@import './layout/grid/grid.scss';
+
+@import './pages/home.scss';
+@import './slider.scss';
+@import './categories.scss';

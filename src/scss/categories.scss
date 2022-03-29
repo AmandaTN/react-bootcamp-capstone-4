@@ -1,0 +1,11 @@
+.category-container {
+    padding: 0 15px;
+
+    img {
+        width: 100%;
+    }
+
+    @media (max-width: #{$screen-sm-min}) {
+        padding: 0;
+    }
+}
