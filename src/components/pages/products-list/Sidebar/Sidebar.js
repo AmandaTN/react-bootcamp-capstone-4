@@ -14,7 +14,6 @@ export function Sidebar({ handleChange, activeFilters }) {
             const {
               data: { name },
               id,
-              slugs,
             } = category;
 
             return (
@@ -27,7 +26,7 @@ export function Sidebar({ handleChange, activeFilters }) {
                   checked={activeFilters[id]}
                   onChange={handleChange}
                 />
-                <label>
+                <label htmlFor={id}>
                   <span className="category-name">{name}</span>
                 </label>
               </li>

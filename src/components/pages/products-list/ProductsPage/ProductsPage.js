@@ -13,7 +13,7 @@ export function ProductsPage() {
     }
 
     useEffect(() => {
-        console.log(`ActiveFilters: ${activeFilters}`, [activeFilters])
+        console.log(`ActiveFilters: `, activeFilters)
     })
 
     return <div className='row'>

@@ -14,8 +14,9 @@ import FeaturedProducts from './components/pages/home/FeaturedProducts'
 import ProductsPage from './components/pages/products-list/ProductsPage';
 
 function App() {
-  // const { data, isLoading } = useFeaturedBanners();
-  // console.log(data, isLoading);
+  // const { data: {results}, isLoading } = useFeaturedBanners();
+  // console.log(results, isLoading);
+
   const [activePage, setActivePage] = useState('home');
 
   const activeHome = () => {

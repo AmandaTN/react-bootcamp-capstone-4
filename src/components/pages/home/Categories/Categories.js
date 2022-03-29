@@ -1,10 +1,9 @@
-//import { useCategories } from '../../../utils/hooks/useCategories';
-import { categoriesData } from "../../../../mocks/product-categories";
+import { useCategories } from "../../../../utils/hooks/useCategories"
 import Title from "../../../common/Title";
 import { Styled } from "./Styled";
 
 export function Categories() {
-  const categories = categoriesData.results;
+  const { data : {results : categoriesData}} = useCategories();
 
   return (
     <Styled className="categories-container">
@@ -13,7 +12,7 @@ export function Categories() {
         <div className="col-md-offset-1 xs-hide sm-hide md-show">
           <></>
         </div>
-        {categories.map((category, i) => {
+        {categoriesData?.map((category, i) => {
           const {
             name, main_image: { alt, url: imgSrc },
           } = category.data;

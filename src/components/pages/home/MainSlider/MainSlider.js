@@ -1,14 +1,18 @@
 /* eslint-disable max-len */
-import { bannersData } from "../../../../mocks/featured-banners-data";
+import { useFeaturedBanners } from "../../../../utils/hooks/useFeaturedBanners";
+//import { bannersData } from "../../../../mocks/featured-banners-data";
 import { useEffect, useState } from "react";
 
 //Components
 import BtnSlider from "../../../common/BtnSlider";
 import Slide from "../../../common/Slide";
 
-const banners = bannersData.results;
-
 export function MainSlider() {
+  const {
+    data: { results : banners },
+    isLoading,
+  } = useFeaturedBanners();
+
   const [slideIndex, setSlideIndex] = useState(1);
   const [paused, setPaused] = useState(false);
 
@@ -27,12 +31,16 @@ export function MainSlider() {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!paused) {
-        const newIndex = slideIndex !== banners.length ? slideIndex + 1 : 1;
-        setSlideIndex(newIndex);
-      }
-    }, 5000);
+    const interval = setInterval(
+      () => {
+        if (!paused) {
+          const newIndex = slideIndex !== banners.length ? slideIndex + 1 : 1;
+          setSlideIndex(newIndex);
+        }
+      },
+      5000,
+      [slideIndex]
+    );
 
     return () => {
       if (interval) {
@@ -41,6 +49,16 @@ export function MainSlider() {
     };
   });
 
+  if (isLoading) {
+    return (
+      <div className="main-slider-container">
+        <div className="slider-images-container">
+          <h3>Loading...</h3>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="main-slider-container">
       <div
@@ -48,7 +66,7 @@ export function MainSlider() {
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
-        {banners.map((image, i) => {
+        {banners?.map((image, i) => {
           const imgSrc = image.data.main_image.url;
           const imgStyle = {
             backgroundImage: `url( ${imgSrc})`,
