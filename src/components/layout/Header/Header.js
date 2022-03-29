@@ -3,13 +3,15 @@ import SearchBar from "../../common/SearchBar";
 import Icon from "../../common/Icon";
 import {Styled} from './Styled'
 
-export const Header = () => {
+export const Header = ({activeHome}) => {
   return (
     <Styled className="header">
       <div className="row">
         <div className="col-xs-12 col-sm-12 col-md-8">
           <div className="store-name-container">
+            <button onClick={activeHome}>
             <Title as="h4">Pietra</Title>
+            </button>
           </div>
         </div>
         <div className="col-xs-8 col-sm-8 col-md-3">
